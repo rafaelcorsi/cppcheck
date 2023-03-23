@@ -652,6 +652,7 @@ class Variable:
     isPointer = False
     isReference = False
     isStatic = False
+    isVolatile = False
     constness = 0
 
     def __init__(self, element):
@@ -676,6 +677,7 @@ class Variable:
         self.isReference = element.get('isReference') == 'true'
         self.isStatic = element.get('isStatic') == 'true'
         self.constness = int(element.get('constness',0))
+        self.isVolatile = element.get('isStatic') == 'true'
 
     def __repr__(self):
         attrs = ["Id", "nameTokenId", "typeStartTokenId", "typeEndTokenId",
