@@ -591,6 +591,7 @@ class Function:
 
         self.argument = {}
         self.argumentId = {}
+       # breakpoint()
 
     def __repr__(self):
         attrs = ["Id", "tokenId", "tokenDefId", "name", "type", "isVirtual",
@@ -676,14 +677,14 @@ class Variable:
         self.isPointer = element.get('isPointer') == 'true'
         self.isReference = element.get('isReference') == 'true'
         self.isStatic = element.get('isStatic') == 'true'
+        self.isVolatile = element.get('isVolatile') == 'true'
         self.constness = int(element.get('constness',0))
-        self.isVolatile = element.get('isStatic') == 'true'
 
     def __repr__(self):
         attrs = ["Id", "nameTokenId", "typeStartTokenId", "typeEndTokenId",
                  "access", "scopeId", "isArgument", "isArray", "isClass",
                  "isConst", "isGlobal", "isExtern", "isLocal", "isPointer",
-                 "isReference", "isStatic", "constness", ]
+                 "isReference", "isStatic", "isVolatile", "constness", ]
         return "{}({})".format(
             "Variable",
             ", ".join(("{}={}".format(a, repr(getattr(self, a))) for a in attrs))
